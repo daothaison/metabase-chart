@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 10.2.1
+- name: metabase
+  repository: https://www.metabase.com/helm
+  version: 0.1.0
+digest: sha256:4354be02a879bcf6bdb65ef3f8f0ff446cf5b9c207d232656784cc6468bbc77f
+generated: "2021-09-18T17:45:42.562811+07:00"

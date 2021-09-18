@@ -1,0 +1,38 @@
+metabase:
+  image:
+    repository: metabase/metabase
+    tag: v0.40.4
+    pullPolicy: IfNotPresent
+  service:
+    port: 80
+  ingress:
+    enabled: true
+    className: nginx
+  # Backend database
+  config:
+    database:
+      type: postgres
+  secrets:
+    database:
+      host: metabase-postgresql-headless
+      port: 5432
+      dbname: metabase
+      username: metabase
+      password: secret
+## Configure the PostgreSQL subchart
+##
+postgresql:
+  image:
+    tag: 12-debian-10
+  postgresqlDatabase: metabase
+  postgresqlUsername: metabase
+  ## Specify password for default user. Otherwise, a random one will be used
+  ##
+  postgresqlPassword: secret
+  ## Specify password for postgres user. Otherwise, a random one will be used
+  ##
+  postgresqlPostgresPassword:
+  ## Configure PostgreSQL persistence
+  ##
+  persistence:
+    size: 5Gi
